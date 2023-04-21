@@ -3,7 +3,10 @@ import matplotlib.pyplot as plt
 import pickle
 import argparse
 from pyvis.network import Network
+import pyautogui
 
+
+screensize = pyautogui.size()
 
 parser = argparse.ArgumentParser(
                     prog='GraphPrinter',
@@ -14,7 +17,7 @@ args = parser.parse_args()
 sc = args.scale / 100
 
 g = pickle.load(open(args.filepath, 'rb'))
-G = Network(height=800, width=800, notebook=True)
-G.toggle_hide_edges_on_drag(True)
+G = Network(height=screensize[1] - 80, width=screensize[0] - 50, notebook=True)
 G.from_nx(g)
+G.toggle_hide_edges_on_drag(True)
 G.show('graph.html')
