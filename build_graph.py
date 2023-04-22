@@ -19,15 +19,13 @@ alphas = {}
 types = {}
 for line in data:
 #    print(line)
-    ind, ind_copy, name, phones, mails, address, comp, pep, inn = line.split(';')
+    ind, name, phones, mails, address, comp, pep, inn = line.split(';')
     phones = phones.split(',')
     mails = mails.split(',')
     address = address.split('\t')
     comp = comp.split('\t')
     pep = pep.split('\t')
     inn = inn.split(',')
-    if name == 'an-rakurs.ru':
-        address = address[:50]
     c1 = c
     labels[c] = name
     types[c] = 'term'
